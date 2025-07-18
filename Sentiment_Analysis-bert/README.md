@@ -1,4 +1,4 @@
-# Text Classification with BERT
+# Sentiment Analysis with BERT
 
 This project implements a text classification model using BERT (Bidirectional Encoder Representations from Transformers) to classify movie reviews from the IMDB dataset. The project is structured into several modules for better organization and maintainability.
 
