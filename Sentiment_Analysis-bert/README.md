@@ -5,7 +5,7 @@ This project implements a text classification model using BERT (Bidirectional En
 ## Project Structure
 
 ```
-text-classification-bert
+sentiment_analysis-bert
 ├── src
 │   ├── data
 │   │   ├── __init__.py
@@ -32,7 +32,7 @@ text-classification-bert
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd text-classification-bert
+   cd sentiment_analysis-bert
    ```
 
 2. **Install the required libraries**:
