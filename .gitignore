@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build/test artifacts
+.pytest_cache/
+.mypy_cache/
+
+# Project runtime artifacts
+Sentiment_Analysis-bert/results/
+Sentiment_Analysis-bert/results_tuned/
+Sentiment_Analysis-bert/logs/
+Sentiment_Analysis-bert/logs_tuned/
+Sentiment_Analysis-bert/saved_model/
