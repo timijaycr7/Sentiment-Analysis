@@ -2,21 +2,22 @@ from pathlib import Path
 
 import streamlit as st
 import torch
-from transformers import BertForSequenceClassification, BertTokenizer
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
 DEFAULT_MODEL_DIR = Path(__file__).resolve().parent / "saved_model"
+FALLBACK_MODEL_ID = "distilbert-base-uncased-finetuned-sst-2-english"
 
 
 @st.cache_resource
 def load_model_and_tokenizer(model_dir: str):
-    tokenizer = BertTokenizer.from_pretrained(model_dir)
-    model = BertForSequenceClassification.from_pretrained(model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    model = AutoModelForSequenceClassification.from_pretrained(model_dir)
     model.eval()
     return tokenizer, model
 
 
-def predict_sentiment(text: str, tokenizer: BertTokenizer, model: BertForSequenceClassification):
+def predict_sentiment(text: str, tokenizer, model):
     inputs = tokenizer(
         text,
         truncation=True,
@@ -49,12 +50,14 @@ def main():
             st.warning("Please enter some review text.")
             return
 
+        model_source = model_dir
         if not Path(model_dir).exists():
-            st.error(f"Model directory not found: {model_dir}")
-            st.info("Run training first to save the model, e.g. `python src/main.py`.")
-            return
+            model_source = FALLBACK_MODEL_ID
+            st.warning(
+                f"Model directory not found: {model_dir}. Using fallback model: {FALLBACK_MODEL_ID}"
+            )
 
-        tokenizer, model = load_model_and_tokenizer(model_dir)
+        tokenizer, model = load_model_and_tokenizer(model_source)
         sentiment, confidence = predict_sentiment(review_text, tokenizer, model)
 
         st.success(f"Prediction: {sentiment}")
