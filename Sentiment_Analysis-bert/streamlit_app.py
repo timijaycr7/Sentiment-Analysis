@@ -60,6 +60,5 @@ def main():
         st.success(f"Prediction: {sentiment}")
         st.write(f"Confidence: {confidence:.2%}")
 
-
 if __name__ == "__main__":
     main()

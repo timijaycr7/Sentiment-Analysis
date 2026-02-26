@@ -5,3 +5,4 @@ datasets
 scikit-learn
 numpy
 streamlit
+altair==4.2.2
