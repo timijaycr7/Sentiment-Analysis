@@ -6,3 +6,4 @@ scikit-learn
 numpy
 streamlit
 altair==4.2.2
+standard-imghdr; python_version >= "3.13"
